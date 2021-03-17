@@ -23,7 +23,7 @@ def your_url():
             return redirect(url_for('urlshort.home'))
 
         if 'url' in request.form.keys():
-            urls[request.form['code']] = {'url': request.form['url']}
+            urls[request.form['code']] = {'url': request.form['url']} 
         else:
             f = request.files['file']
             full_name = request.form['code'] + secure_filename(f.filename)
@@ -56,7 +56,7 @@ def page_not_found(error):
     return render_template('page_not_found.html'), 404
 
 
-@bp.route('/api')
+@bp.route('/api')                      #api is for cookies - The data saved.
 def session_api():
     return jsonify(list(session.keys()))
 
